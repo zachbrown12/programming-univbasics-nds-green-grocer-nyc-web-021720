@@ -1,18 +1,18 @@
 def consolidate_cart(cart)
-  new_cart = {}
-  #iterate through cart and convert to hash
-  cart.each do |hash|
-    hash.each do |name,describe|#name: AVOCADO, KALE. #describe: price, clearance
-      if new_cart[name] #if the new_cart already has a name and count
-        new_cart[name][:count] += 1 #increase the count by 1
-      else #if cart is empty / does not contain item
-        new_cart[name]=describe #set name as key and describe as value
-        new_cart[name][:count] = 1 #create and set count value to 1 (first item occurance)
+ result = {}
+  # code here	  # code here
+  cart.each_with_index do |item, i|
+    item.each do |food, info|
+      if result[food]
+        result[food][:count] += 1
+      else
+        result[food] = info
+        result[food][:count] = 1
       end
     end
   end
-  new_cart #return the new_cart 
-end	end
+  result
+	end
 end
 
 def apply_coupons(cart, coupons)
