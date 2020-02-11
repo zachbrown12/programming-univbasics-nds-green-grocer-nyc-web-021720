@@ -31,25 +31,11 @@ new_cart
 end
 
 def apply_coupons(cart, coupons)
-  # code here
-  coupons.each do |coupon|
-    if cart.keys.include? coupon[:item]
-      if cart[coupon[:item]][:count] >= coupon[:num]
-        new_name = "#{coupon[:item]} W/COUPON"
-        if cart[new_name]
-          cart[new_name][:count] += coupon[:num]
-        else
-          cart[new_name] = {
-            count: coupon[:num],
-            price: coupon[:cost]/coupon[:num],
-            clearance: cart[coupon[:item]][:clearance]
-          }
-        end
-        cart[coupon[:item]][:count] -= coupon[:num]
-      end
-    end
-  end
-  cart
+  counter = 0
+  while counter < coupons.length
+    cart_item = find_item_by_name_in_collection(coupons[counter][:item], cart)
+    couponed_item_name = "#{coupons[counter][:num]
+  
 end
 
 def apply_clearance(cart)
